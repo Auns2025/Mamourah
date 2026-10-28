@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShieldCheck, Leaf, HardHat, Award, Building2, FileCheck, Info, ExternalLink, Download, X } from 'lucide-react';
+import { ShieldCheck, Leaf, HardHat, Award, Building2, FileCheck, ExternalLink, Download, X } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
 import FinalCta from '../components/FinalCta';
 import SEO from '../components/SEO';
@@ -16,9 +16,11 @@ const categories = [
 
 export default function Certificates() {
   const [selected, setSelected] = useState(null);
+
   return (
     <>
       <SEO title="Certifications & Commercial Approvals" description="Explore Mamourah's ISO management systems, commercial registrations, supplier and project approvals in the UAE." canonical="https://www.mamourah.ae/certificates" />
+      
       {/* Original hero and brand styling preserved */}
       <section className="relative pt-36 pb-20 sm:pt-44 sm:pb-24 bg-brand-black text-white overflow-hidden">
         <div className="absolute inset-0">
@@ -33,9 +35,11 @@ export default function Certificates() {
           </div>
         </div>
       </section>
+
       <section className="py-20 sm:py-28 bg-brand-surface">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeader badge="COMPANY CREDENTIALS" title="CERTIFICATES & APPROVALS" subtitle="View original documents and certifications across management, suppliers, projects and commercial registrations" />
+          
           {categories.map((category) => {
             const items = certificatesData.filter((cert) => cert.category === category);
             if (!items.length) return null;
@@ -45,12 +49,29 @@ export default function Certificates() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                   {items.map((cert) => {
                     const Icon = iconMap[cert.icon] || FileCheck;
+                    const isArrayPreview = Array.isArray(cert.preview);
+                    const firstImage = isArrayPreview ? cert.preview[0] : cert.preview;
+                    
                     return (
                       <article key={cert.id} className="bg-white border border-brand-border flex flex-col hover:border-brand-red/60 transition-all duration-300 hover:shadow-card group overflow-hidden">
+                        
+                        {/* CARD IMAGE PREVIEW (Handles both String and Array) */}
                         <button type="button" onClick={() => setSelected(cert)} className="relative w-full h-64 bg-brand-ivory border-b border-brand-border overflow-hidden text-left" aria-label={`Preview ${cert.title}`}>
-                          <img src={cert.preview} alt={`${cert.title} document preview`} loading="lazy" className="w-full h-full object-contain p-3 group-hover:scale-[1.025] transition-transform duration-300" />
+                          <img 
+                            src={firstImage} 
+                            alt={`${cert.title} document preview`} 
+                            loading="lazy" 
+                            className="w-full h-full object-contain p-3 group-hover:scale-[1.025] transition-transform duration-300" 
+                          />
+                          {/* Agar array hai (multiple pages) toh badge show karein */}
+                          {isArrayPreview && (
+                            <span className="absolute top-3 left-3 px-2 py-1 text-[10px] font-bold font-montserrat bg-brand-black/80 text-white rounded-sm">
+                              {cert.preview.length} Pages
+                            </span>
+                          )}
                           <span className="absolute bottom-3 right-3 px-3 py-1 text-[10px] uppercase font-bold font-montserrat bg-brand-black text-white">View Certificate</span>
                         </button>
+
                         <div className="p-6 sm:p-7 flex flex-col flex-1">
                           <div className="flex items-center justify-between mb-4">
                             <div className="w-11 h-11 bg-brand-ivory border border-brand-border flex items-center justify-center text-brand-red"><Icon className="w-5 h-5" /></div>
@@ -70,12 +91,15 @@ export default function Certificates() {
               </div>
             );
           })}
+          
           <div className="p-8 sm:p-10 bg-brand-black text-white border-l-4 border-brand-red">
             <h3 className="text-xl font-montserrat font-bold uppercase text-white mb-3">Supplier &amp; Government Pre-Qualification</h3>
             <p className="text-xs sm:text-sm text-neutral-300 font-poppins leading-relaxed max-w-3xl">Browse the original supplier, contractor, project and registration documents above. Contact our team for confirmation of current registration status or additional supporting documentation.</p>
           </div>
         </div>
       </section>
+
+      {/* MODAL PREVIEW */}
       {selected && (
         <div className="fixed inset-0 z-[100] bg-black/85 flex items-center justify-center p-3 sm:p-8" role="dialog" aria-modal="true" aria-label={selected.title} onMouseDown={(e) => { if (e.target === e.currentTarget) setSelected(null); }}>
           <div className="bg-white w-full max-w-5xl h-[90vh] flex flex-col">
@@ -86,14 +110,33 @@ export default function Certificates() {
                 <button type="button" onClick={() => setSelected(null)} aria-label="Close preview" className="text-brand-black"><X size={24} /></button>
               </div>
             </div>
+
+            {/* Agar file PDF hai */}
             {selected.fileType === 'pdf' ? (
               <iframe title={selected.title} src={`${selected.file}#toolbar=1`} className="w-full flex-1 border-0" />
             ) : (
-              <div className="flex-1 min-h-0 overflow-auto bg-brand-ivory flex justify-center p-5"><img src={selected.file} alt={selected.title} className="max-w-full h-full object-contain" /></div>
+              /* Agar file IMAGE hai */
+              <div className="flex-1 min-h-0 overflow-auto bg-brand-ivory flex flex-col items-center p-5 gap-5">
+                {Array.isArray(selected.preview) ? (
+                  // Agar array hai (e.g., Jotun with 2 pages)
+                  selected.preview.map((imgSrc, idx) => (
+                    <img 
+                      key={idx} 
+                      src={imgSrc} 
+                      alt={`${selected.title} - Page ${idx + 1}`} 
+                      className="max-w-full h-auto object-contain shadow-md border border-brand-border" 
+                    />
+                  ))
+                ) : (
+                  // Agar single image string hai
+                  <img src={selected.file} alt={selected.title} className="max-w-full h-full object-contain" />
+                )}
+              </div>
             )}
           </div>
         </div>
       )}
+      
       <FinalCta />
     </>
   );

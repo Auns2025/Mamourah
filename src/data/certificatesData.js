@@ -78,6 +78,22 @@ export const certificatesData = [
     "pages": 2
   },
   {
+    "id": "jotun-supplier",
+    "title": "Jotun Supplier Authorization",
+    "category": "Supplier & Manufacturer Authorizations",
+    "code": "JOTUN",
+    "icon": "Award",
+    "description": "Official supplier authorization documentation from Jotun",
+    "scope": "Official supplier authorization documentation from Jotun",
+    "file": "/certificates/Jotun supplier.pdf",
+    "preview": [
+      "/certificates/page-1.png",
+      "/certificates/page-2.png"
+    ],
+    "fileType": "pdf",
+    "pages": 2
+  },
+  {
     "id": "emirates-paints",
     "title": "Emirates Paints Approval",
     "category": "Supplier & Manufacturer Authorizations",
