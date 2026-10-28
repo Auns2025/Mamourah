@@ -25,7 +25,7 @@ export default function Footer() {
                   MAMOURAH
                 </span>
                 <span className="text-[9px] font-montserrat font-medium tracking-widest uppercase text-neutral-400">
-                  Development &amp; Construction
+                  Development &amp; Construction LLC SP
                 </span>
               </div>
             </Link>

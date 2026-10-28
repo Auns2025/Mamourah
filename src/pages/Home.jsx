@@ -121,7 +121,7 @@ export default function Home() {
               <div className="relative max-w-md mx-auto lg:max-w-none">
                 {/* Primary Image */}
                 <ClipRevealImage
-                  src="/images/Blueprints to Skyline_ Engineering in Progress.png"
+                  src="/images/Blueprints to Skyline_ Engineering in Progress.jpg"
                   alt="Mamourah Development & Construction project delivery"
                   aspectRatio="aspect-[4/3] sm:aspect-[16/11]"
                   enableParallax={true}

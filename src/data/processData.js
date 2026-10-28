@@ -19,7 +19,7 @@ export const processSteps = [
     subtitle: "Statutory & Engineering Clearance",
     description: "Develop detailed designs and obtain necessary approvals. Coordination with licensed architectural consultants and direct liaison with municipal authorities, civil defense, and utility providers.",
     icon: "FileText",
-    image: "/images/Dubai Architectural Approval Meeting.png",
+    image: "/images/Dubai Architectural Approval Meeting.jpg",
     details: [
       "Architectural and structural engineering drawings review",
       "Liaison with UAE Municipalities & Civil Defense",
@@ -33,7 +33,7 @@ export const processSteps = [
     subtitle: "Trusted Supply Chain",
     description: "Source high-quality materials from trusted suppliers. Ensuring all structural steel, ready-mix concrete, aggregates, MEP items, and finishes conform strictly to UAE standards and certified test reports.",
     icon: "Layers",
-    image: "/images/Construction Materials Inspection at a City Site.png",
+    image: "/images/Construction Materials Inspection at a City Site.jpg",
     details: [
       "Vetted distributor and manufacturer network",
       "Laboratory testing and material compliance certificates",
@@ -47,7 +47,7 @@ export const processSteps = [
     subtitle: "Precision On-Site Management",
     description: "Execute projects through coordinated on-site management. Professional site engineers, safety supervisors, and specialized trades working under daily synchronization and master scheduling.",
     icon: "Hammer",
-    image: "/images/Construction Site Coordination and Planning.png",
+    image: "/images/Construction Site Coordination and Planning.jpg",
     details: [
       "Dedicated resident civil engineer and safety officer",
       "Daily progress meetings and milestone tracking",

@@ -27,13 +27,13 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          {/* <Route path="/services" element={<Services />} /> */}
-          {/* <Route path="/services/:slug" element={<ServiceDetail />} /> */}
-          {/* <Route path="/projects" element={<Projects />} /> */}
-          {/* <Route path="/projects/:slug" element={<ProjectDetail />} /> */}
-          {/* <Route path="/expertise" element={<Expertise />} /> */}
-          {/* <Route path="/quality-hse" element={<QualityHse />} /> */}
-          {/* <Route path="/certificates" element={<Certificates />} /> */}
+          <Route path="/services" element={<Services />} />
+          <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/projects/:slug" element={<ProjectDetail />} />
+          <Route path="/expertise" element={<Expertise />} />
+          <Route path="/quality-hse" element={<QualityHse />} />
+          <Route path="/certificates" element={<Certificates />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />

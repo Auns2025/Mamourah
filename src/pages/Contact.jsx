@@ -518,7 +518,7 @@ export default function Contact() {
       {/* Relevant Architectural Image Strip */}
       <section className="relative h-64 sm:h-80 overflow-hidden bg-brand-black">
         <img
-          src="/images/hero-3.jpg"
+          src="/images/Modern Luxury Villa Under Construction.jpg"
           alt="Mamourah Khorfakkan and Sharjah Engineering Architecture"
           loading="lazy"
           className="w-full h-full object-cover filter brightness-[0.45]"

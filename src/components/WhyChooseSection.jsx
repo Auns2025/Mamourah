@@ -20,7 +20,7 @@ export default function WhyChooseSection() {
           {/* Main Visual */}
           <div className="relative overflow-hidden aspect-[4/5] bg-brand-ivory shadow-elevated group">
             <img
-              src="/images/Architectural Plans Overlooking a Cityscape.png"
+              src="/images/Architectural Plans Overlooking a Cityscape.jpg"
               alt="Mamourah Development & Construction on-site engineering team"
               loading="eager"
               decoding="async"

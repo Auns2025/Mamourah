@@ -48,7 +48,7 @@ const expertiseAreas = [
     title: "Engineering Excellence",
     subtitle: "Technical Leadership & Project Governance",
     description: "Our technical teams bridge conceptual architectural design with on-site physical realization. Through advanced Critical Path Method (CPM) programming, value engineering, and daily site synchronization, we maintain absolute control over cost and schedule.",
-    image: "/images/service-management.jpg",
+    image: "/images/Engineers Reviewing Construction Plans On Site.jpg",
     points: [
       "Master construction programming using Primavera & MS Project",
       "Statutory municipal authority approvals and licensing",

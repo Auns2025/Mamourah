@@ -14,10 +14,6 @@ import MagneticButton from './MagneticButton';
 import { servicesData } from '../data/servicesData';
 import { companyData } from '../data/companyData';
 
-/**
- * EFFECT 06: Navigation underline sweep (brand-red animated line)
- * EFFECT 08: Sticky navbar transition (transparent on hero, solid light with restrained shadow on scroll)
- */
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,34 +22,22 @@ export default function Navbar() {
 
   const isHomePage = location.pathname === '/';
 
-  // Handle scroll detection for sticky navbar
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 40);
     };
-
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close menus on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setIsServicesOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'unset';
     return () => {
       document.body.style.overflow = 'unset';
     };
@@ -61,15 +45,14 @@ export default function Navbar() {
 
   const isTransparent = isHomePage && !isScrolled;
 
-  // Contact option navLinks list se remove kar diya gaya hai
+  const logoSrc = isTransparent
+    ? '/images/logo.jpeg'
+    : '/images/1643de89-e926-45e4-afa8-2724c4066ec6.png';
+
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    {
-      name: 'Services',
-      path: '/services',
-      hasDropdown: true
-    },
+    { name: 'Services', path: '/services', hasDropdown: true },
     { name: 'Projects', path: '/projects' },
     { name: 'Expertise', path: '/expertise' },
     { name: 'Quality & HSE', path: '/quality-hse' },
@@ -84,20 +67,25 @@ export default function Navbar() {
           : 'bg-white/95 backdrop-blur-md py-3 text-brand-black shadow-subtle border-b border-brand-border/60'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 🔥 max-w-7xl hata kar w-full kiya taake logo left edge par aaye */}
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between gap-4">
           
-          {/* Logo / Architectural Wordmark */}
+          {/* Logo — mr-auto se left push */}
           <Link
             to="/"
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red shrink-0"
+            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-red shrink-0 mr-auto"
             aria-label="Mamourah Development & Construction - Return to Home"
           >
-            {/* Architectural Geometric Monogram */}
-            <div className="w-10 h-10 sm:w-11 sm:h-11 bg-brand-red flex items-center justify-center rounded-sm transition-transform duration-300 group-hover:scale-105 shadow-sm">
-              <span className="font-montserrat font-black text-xl sm:text-2xl text-white tracking-tighter">
-                M
-              </span>
+            <div className="h-12 sm:h-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-105 overflow-hidden">
+              <img
+                src={logoSrc}
+                alt="Mamourah Development & Construction Logo"
+                className="h-full w-auto object-contain transition-opacity duration-300"
+                loading="eager"
+                // 🔥 Blend mode lagaya taake white box gayab ho jaye hero par
+                style={{ mixBlendMode: isTransparent ? 'screen' : 'normal' }}
+              />
             </div>
             <div className="flex flex-col">
               <span
@@ -112,13 +100,13 @@ export default function Navbar() {
                   isTransparent ? 'text-white/80' : 'text-brand-body'
                 }`}
               >
-                Development & Construction
+                Development & Construction LLC SP
               </span>
             </div>
           </Link>
 
-          {/* Desktop Navigation Links (Alignment Adjusted to lg:flex) */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 justify-center flex-1" aria-label="Main Navigation">
+          {/* Desktop Navigation */}
+          <nav className="hidden lg:flex items-center gap-1 xl:gap-2 justify-center" aria-label="Main Navigation">
             {navLinks.map((item) => {
               if (item.hasDropdown) {
                 return (
@@ -146,11 +134,9 @@ export default function Navbar() {
                           isServicesOpen ? 'rotate-180' : ''
                         }`}
                       />
-                      {/* EFFECT 06: Underline sweep */}
                       <span className="absolute bottom-0 left-2.5 right-2.5 xl:left-3 xl:right-3 h-[2px] bg-brand-red scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                     </NavLink>
 
-                    {/* Services Dropdown Menu */}
                     <AnimatePresence>
                       {isServicesOpen && (
                         <motion.div
@@ -213,7 +199,6 @@ export default function Navbar() {
                   {({ isActive }) => (
                     <>
                       {item.name}
-                      {/* EFFECT 06: Underline sweep */}
                       <span
                         className={`absolute bottom-0 left-2.5 right-2.5 xl:left-3 xl:right-3 h-[2px] bg-brand-red transition-transform duration-300 origin-left ${
                           isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
@@ -226,19 +211,13 @@ export default function Navbar() {
             })}
           </nav>
 
-          {/* Desktop Right Contact Us Button */}
-          <div className="hidden lg:flex items-center gap-3 shrink-0">
-            <MagneticButton
-              to="/contact"
-              variant="primary"
-              size="sm"
-              icon={ArrowRight}
-            >
+          {/* Contact Button */}
+          <div className="hidden lg:flex items-center gap-3 shrink-0 ml-auto">
+            <MagneticButton to="/contact" variant="primary" size="sm" icon={ArrowRight}>
               Contact Us
             </MagneticButton>
           </div>
 
-          {/* Mobile Hamburger Button */}
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -280,7 +259,6 @@ export default function Navbar() {
                     {item.name}
                   </NavLink>
 
-                  {/* Submenu for services in mobile view */}
                   {item.hasDropdown && (
                     <div className="pl-3 mt-1.5 space-y-1.5 border-l-2 border-brand-red/40 my-1">
                       {servicesData.map((svc) => (
@@ -298,7 +276,6 @@ export default function Navbar() {
                 </div>
               ))}
 
-              {/* Mobile Quick Contact Information */}
               <div className="pt-4 space-y-2 text-xs text-brand-body font-poppins">
                 <a
                   href={`tel:${companyData.phoneRaw}`}

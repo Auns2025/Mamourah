@@ -57,12 +57,12 @@ export default function Projects() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Transparency / Archival Note */}
-          <div className="mb-8 p-4 bg-white border border-brand-border flex items-start gap-3">
+          {/* <div className="mb-8 p-4 bg-white border border-brand-border flex items-start gap-3">
             <Info className="w-5 h-5 text-brand-red shrink-0 mt-0.5" />
             <p className="text-xs text-brand-body font-poppins leading-relaxed">
               <strong className="text-brand-black font-semibold">Archival Transparency:</strong> In adherence to strict professional ethics, project records below document actual verified scopes executed by Mamourah. Where original archival site photographs are restricted or proprietary, high-fidelity representative architectural visuals are clearly indicated. Authentic contract archives and completion letters are maintained at our Khorfakkan headquarters.
             </p>
-          </div>
+          </div> */}
 
           {/* Filter Bar */}
           <div className="flex flex-wrap items-center gap-2 mb-12 border-b border-brand-border pb-4">

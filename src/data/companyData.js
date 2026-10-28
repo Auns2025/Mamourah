@@ -15,7 +15,7 @@ export const companyData = {
   email: "info@mamourah.ae",
   website: "www.mamourah.ae",
   websiteUrl: "https://www.mamourah.ae",
-  workingHours: "Sunday – Thursday: 8:00 AM – 5:30 PM",
+  workingHours: "Saturday – Thursday: 8:00 AM – 5:30 PM",
   
   introduction: "Mamourah Development & Construction L.L.C SP is an engineering and construction company delivering integrated construction and development solutions across the UAE. Established in 2003, the company specializes in delivering projects through technical expertise, contemporary methods, professional coordination and a commitment to quality.",
   

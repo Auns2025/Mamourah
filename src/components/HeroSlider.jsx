@@ -13,7 +13,7 @@ const slides = [
     primaryLink: "/projects",
     secondaryCta: "Discover Mamourah",
     secondaryLink: "/about",
-    image: "/images/Golden-Hour Skyline Construction Site.png",
+    image: "/images/Golden-Hour Skyline Construction Site.jpg",
     alt: "Modern architectural construction in the UAE with structural concrete and warm sunlight"
   },
   {
@@ -50,7 +50,6 @@ export default function HeroSlider() {
   const [progress, setProgress] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   
-  // Progress tracker ref taake interval mein state batching ka masla na ho
   const progressRef = useRef(0);
   const progressIntervalRef = useRef(null);
 
@@ -66,7 +65,6 @@ export default function HeroSlider() {
     return () => mediaQuery.removeEventListener('change', handler);
   }, []);
 
-  // Slide change karne ka function
   const changeSlide = useCallback((direction) => {
     setCurrentSlide((prev) => {
       if (direction === 'next') {
@@ -75,29 +73,24 @@ export default function HeroSlider() {
         return (prev - 1 + slides.length) % slides.length;
       }
     });
-    // Progress reset karein
     progressRef.current = 0;
     setProgress(0);
   }, []);
 
-  // Autoplay Effect
   useEffect(() => {
     if (!isPlaying || prefersReducedMotion) {
       if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
       return;
     }
 
-    const intervalStep = 50; // 50ms per tick
+    const intervalStep = 50;
     
     progressIntervalRef.current = setInterval(() => {
-      // Ref ko barhayein
       progressRef.current += (intervalStep / AUTOPLAY_DURATION) * 100;
       
       if (progressRef.current >= 100) {
-        // Agar 100 ho jaye toh agla slide change karein
         changeSlide('next');
       } else {
-        // Warna UI ko update karein
         setProgress(progressRef.current);
       }
     }, intervalStep);
@@ -107,7 +100,6 @@ export default function HeroSlider() {
     };
   }, [isPlaying, prefersReducedMotion, changeSlide]);
 
-  // Manual controls ke liye
   const nextSlide = () => changeSlide('next');
   const prevSlide = () => changeSlide('prev');
   const goToSlide = (idx) => {
@@ -119,12 +111,10 @@ export default function HeroSlider() {
   const slide = slides[currentSlide];
 
   return (
-    <section
-      className="relative w-full h-[100vh] min-h-[640px] max-h-[1080px] bg-brand-black overflow-hidden select-none"
-      aria-label="Cinematic Hero Showcase"
-      onMouseEnter={() => setIsPlaying(false)}
-      onMouseLeave={() => !prefersReducedMotion && setIsPlaying(true)}
-    >
+  <section
+  className="relative w-full h-[100vh] min-h-[640px] max-h-[1080px] bg-brand-black overflow-hidden select-none"
+  aria-label="Cinematic Hero Showcase"
+>
       {/* Background Slides */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -150,7 +140,9 @@ export default function HeroSlider() {
 
       {/* Hero Content Overlay */}
       <div className="relative z-10 w-full h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
-        <div className="max-w-3xl pt-16 sm:pt-20 pb-24 sm:pb-32">
+        
+        {/* 🔥 YAHAN CHANGE KYA GAYA HAI: lg:pt-40 add kiya gaya hai taake lg screen par text neeche aaye */}
+        <div className="max-w-3xl pt-20 sm:pt-28 lg:pt-40 pb-24 sm:pb-32">
           
           {/* Tagline */}
           <motion.div
