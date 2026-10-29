@@ -17,8 +17,12 @@ export default function Footer() {
           {/* Column 1: Brand & Introduction (4 cols) */}
           <div className="lg:col-span-4">
             <Link to="/" className="inline-flex items-center gap-3 group mb-5">
-              <div className="w-10 h-10 bg-brand-red flex items-center justify-center rounded-xs">
-                <span className="font-montserrat font-black text-xl text-white">M</span>
+              <div className="w-12 h-12 bg-white flex items-center justify-center rounded-xs overflow-hidden shrink-0">
+                <img
+                  src="/images/logo.jpeg"
+                  alt="Mamourah Development & Construction Logo"
+                  className="w-full h-full object-contain"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="font-montserrat font-black text-lg tracking-[0.18em] text-white">
