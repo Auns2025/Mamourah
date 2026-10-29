@@ -248,7 +248,7 @@ export default function Contact() {
                         {companyData.workingHours}
                       </div>
                       <div className="text-[11px] text-brand-body mt-0.5">
-                        Friday &amp; Saturday: Technical Field Roster Only
+                        Friday  Emergency Only
                       </div>
                     </div>
                   </div>
@@ -263,7 +263,7 @@ export default function Contact() {
                   <span>COMMERCIAL LICENSURE</span>
                 </div>
                 <p className="text-xs text-neutral-400 leading-relaxed font-poppins">
-                  Mamourah Development &amp; Construction L.L.C SP is officially registered with the Sharjah Economic Development Department and Kalba/Khorfakkan Municipalities.
+                  Mamourah Development &amp; Construction L.L.C SP is officially registered with the Sharjah Economic Development Department Khorfakkan Municipalities.
                 </p>
               </div>
 
@@ -392,7 +392,7 @@ export default function Contact() {
                           name="fullName"
                           value={formData.fullName}
                           onChange={handleChange}
-                          placeholder="e.g. Eng. Mohammed Al Blooshi"
+                          placeholder="Name"
                           required
                           className="w-full px-4 py-3 bg-white border border-brand-border focus:border-brand-red focus:ring-1 focus:ring-brand-red text-sm font-poppins text-brand-black outline-none transition-colors"
                         />

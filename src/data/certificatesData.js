@@ -64,19 +64,19 @@ export const certificatesData = [
     "fileType": "pdf",
     "pages": 1
   },
-  {
-    "id": "jotun-agent",
-    "title": "Jotun Agent Authorization",
-    "category": "Supplier & Manufacturer Authorizations",
-    "code": "JOTUN",
-    "icon": "Award",
-    "description": "Manufacturer / agent approval documentation",
-    "scope": "Manufacturer / agent approval documentation",
-    "file": "/certificates/jotun-agent.pdf",
-    "preview": "/certificates/jotun-agent-preview.png",
-    "fileType": "pdf",
-    "pages": 2
-  },
+  // {
+  //   "id": "jotun-agent",
+  //   "title": "Jotun Agent Authorization",
+  //   "category": "Supplier & Manufacturer Authorizations",
+  //   "code": "JOTUN",
+  //   "icon": "Award",
+  //   "description": "Manufacturer / agent approval documentation",
+  //   "scope": "Manufacturer / agent approval documentation",
+  //   "file": "/certificates/jotun-agent.pdf",
+  //   "preview": "/certificates/jotun-agent-preview.png",
+  //   "fileType": "pdf",
+  //   "pages": 2
+  // },
   {
     "id": "jotun-supplier",
     "title": "Jotun Supplier Authorization",
@@ -108,7 +108,7 @@ export const certificatesData = [
   },
   {
     "id": "energy-solutions",
-    "title": "Energy Solutions Supplier Authorization",
+    "title": "Heloul al Taqah tr - Rikada Brand Supplier Authorization",
     "category": "Supplier & Manufacturer Authorizations",
     "code": "SUPPLIER",
     "icon": "Award",

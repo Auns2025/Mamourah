@@ -1,0 +1,102 @@
+/* Locally scoped styles for SisterCompanies infinite marquee slider */
+
+@keyframes sisterMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.sister-slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem 0 1.5rem 0;
+}
+
+.sister-slider-track {
+  display: flex;
+  width: max-content;
+  align-items: stretch;
+}
+
+.sister-slider-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: stretch;
+  animation: sisterMarquee 42s linear infinite;
+  will-change: transform;
+}
+
+/* Pause on mouse hover anywhere on slider */
+.sister-slider-container:hover .sister-slider-group {
+  animation-play-state: paused;
+}
+
+/* Pause on keyboard focus-within */
+.sister-slider-container:focus-within .sister-slider-group {
+  animation-play-state: paused;
+}
+
+/* Pause when touch/is-paused is active */
+.sister-slider-group.is-paused {
+  animation-play-state: paused;
+}
+
+/* Subtle edge gradients for smooth visual entry & exit */
+.sister-fade-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3.5rem;
+  background: linear-gradient(to right, #FAF7F2 10%, rgba(250, 247, 242, 0) 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.sister-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 3.5rem;
+  background: linear-gradient(to left, #FAF7F2 10%, rgba(250, 247, 242, 0) 100%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+@media (min-width: 640px) {
+  .sister-fade-left,
+  .sister-fade-right {
+    width: 6rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .sister-fade-left,
+  .sister-fade-right {
+    width: 9rem;
+  }
+}
+
+/* Reduced motion accessibility support */
+@media (prefers-reduced-motion: reduce) {
+  .sister-slider-container {
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .sister-slider-group {
+    animation: none !important;
+    transform: none !important;
+  }
+  .sister-slider-group[aria-hidden="true"] {
+    display: none !important;
+  }
+  .sister-fade-left,
+  .sister-fade-right {
+    display: none !important;
+  }
+}

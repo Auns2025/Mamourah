@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import HeroSlider from '../components/HeroSlider';
 import CredibilityStrip from '../components/CredibilityStrip';
+import SisterCompanies from '../components/SisterCompanies';
 import SectionHeader from '../components/SectionHeader';
 import ServiceCard from '../components/ServiceCard';
 import ProjectCard from '../components/ProjectCard';
@@ -59,6 +60,9 @@ export default function Home() {
 
       {/* SECTION 03: Credibility Strip */}
       <CredibilityStrip />
+
+      {/* SISTER COMPANIES SLIDER */}
+      <SisterCompanies />
 
       {/* SECTION 04: About Mamourah — Editorial Two-Column */}
       <section className="py-20 sm:py-28 bg-white overflow-hidden">
