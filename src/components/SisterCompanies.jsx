@@ -24,7 +24,7 @@ const sisterCompanies = [
     id: 'naqsh-alfirooz',
     name: 'Naqsh Alfirooz Paints',
     sector: 'Painting Solutions & Coatings',
-    logo: '/images/naqsh-alfirooz.png'
+    logo: '/images/Naqsh .jpeg'
   }
 ];
 
@@ -38,7 +38,7 @@ export default function SisterCompanies() {
   // Auto-detect if authentic logo asset becomes available locally
   useEffect(() => {
     const img = new Image();
-    img.src = '/images/naqsh-alfirooz.png';
+    img.src = '/images/Naqsh .jpeg';
     img.onload = () => {
       setImageErrors((prev) => {
         const next = { ...prev };
