@@ -12,13 +12,13 @@ const sisterCompanies = [
     id: 'capital-trading',
     name: 'Capital Trading',
     sector: 'Trading & Building Materials',
-    logo: '/images/capital-trading.jpeg'
+    logo: '/images/Capital Trading Abstract Emblem Logo.png'
   },
   {
     id: 'risan',
     name: 'Risan Electromechanical Contg',
     sector: 'Electromechanical Contracting',
-    logo: '/images/risan.jpeg'
+    logo: '/images/RISAN Industrial Lightning Logo.png'
   },
   {
     id: 'naqsh-alfirooz',
@@ -30,7 +30,7 @@ const sisterCompanies = [
     id: 'Tatweer-solution',
     name: 'Tatweer smart solution',
     sector: 'IT & Software Solutions',
-    logo: '/images/smart-solution.jpeg'
+    logo: '/images/Smart Solutions Loop Logo.png'
   }
 ];
 
