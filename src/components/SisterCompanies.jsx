@@ -11,7 +11,7 @@ const sisterCompanies = [
   {
     id: 'capital-trading',
     name: 'Capital Trading',
-    sector: 'Smart irrigation &landscapibg solutions',
+    sector: 'Smart irrigation & landscaping solutions',
     logo: '/images/Capital Trading Abstract Emblem Logo.png'
   },
   {
