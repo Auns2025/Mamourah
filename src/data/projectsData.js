@@ -17,7 +17,7 @@ export const projectsData = [
     location: "Sharjah, United Arab Emirates",
     clientOrEntity: "Government Entity / Cultural Authority",
     status: "Completed",
-    image: "/images/Restoring an Islamic-Inspired City Landmark.jpg",
+    image: "/images/Al Qasimi Publications Façade.jpg",
     isRepresentativeImage: true,
     imageCaption: "Representative architectural visual illustrative of the civic cultural structure.",
     summary: "Comprehensive maintenance, exterior restoration, and structural preservation works for the esteemed Al Qasimi Publications Building in Sharjah.",
