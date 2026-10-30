@@ -69,7 +69,7 @@ export const projectsData = [
     location: "University City, Sharjah, UAE",
     clientOrEntity: "Sharjah Government / Educational Authorities",
     status: "Completed",
-    image: "/images/project-university-city.jpg",
+    image: "/images/project-university.jpeg",
     isRepresentativeImage: true,
     imageCaption: "Representative architectural visual illustrative of institutional hall structures.",
     summary: "Structural and architectural maintenance works for the prestigious University City Hall Building in Sharjah.",

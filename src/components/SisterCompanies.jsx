@@ -24,7 +24,7 @@ const sisterCompanies = [
     id: 'naqsh-alfirooz',
     name: 'Naqsh Alfirooz Paints',
     sector: 'Painting Solutions & Coatings',
-    logo: '/images/Naqsh .jpeg'
+    logo: '/images/Nafsh Al-Fairooz 3D Logo.png'
   },
   {
     id: 'Tatweer-solution',
@@ -35,24 +35,8 @@ const sisterCompanies = [
 ];
 
 export default function SisterCompanies() {
-  const [imageErrors, setImageErrors] = useState({
-    // Initialized for unverified assets to ensure immediate clean typographic presentation without broken image icons
-    'naqsh-alfirooz': true
-  });
+  const [imageErrors, setImageErrors] = useState({});
   const [isPaused, setIsPaused] = useState(false);
-
-  // Auto-detect if authentic logo asset becomes available locally
-  useEffect(() => {
-    const img = new Image();
-    img.src = '/images/Naqsh .jpeg';
-    img.onload = () => {
-      setImageErrors((prev) => {
-        const next = { ...prev };
-        delete next['naqsh-alfirooz'];
-        return next;
-      });
-    };
-  }, []);
 
   const handleImageError = (id) => {
     setImageErrors((prev) => ({ ...prev, [id]: true }));
@@ -125,6 +109,7 @@ export default function SisterCompanies() {
           >
             {trackItems.map((company, index) => {
               const hasError = imageErrors[company.id];
+              const isEnlarged = company.id === 'risan' || company.id === 'naqsh-alfirooz';
 
               return (
                 <div
@@ -155,7 +140,11 @@ export default function SisterCompanies() {
                       <img
                         src={company.logo}
                         alt={`${company.name} logo`}
-                        className="max-h-20 sm:max-h-24 max-w-[85%] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        className={
+                          isEnlarged
+                            ? "h-[105px] sm:h-[126px] max-w-[92%] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                            : "max-h-20 sm:max-h-24 max-w-[85%] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        }
                         loading="lazy"
                         onError={() => handleImageError(company.id)}
                       />
@@ -184,6 +173,7 @@ export default function SisterCompanies() {
           >
             {trackItems.map((company, index) => {
               const hasError = imageErrors[company.id];
+              const isEnlarged = company.id === 'risan' || company.id === 'naqsh-alfirooz';
 
               return (
                 <div
@@ -212,7 +202,11 @@ export default function SisterCompanies() {
                       <img
                         src={company.logo}
                         alt=""
-                        className="max-h-20 sm:max-h-24 max-w-[85%] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        className={
+                          isEnlarged
+                            ? "h-[105px] sm:h-[126px] max-w-[92%] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                            : "max-h-20 sm:max-h-24 max-w-[85%] w-auto h-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                        }
                         loading="lazy"
                       />
                     )}
