@@ -25,6 +25,12 @@ const sisterCompanies = [
     name: 'Naqsh Alfirooz Paints',
     sector: 'Painting Solutions & Coatings',
     logo: '/images/Naqsh .jpeg'
+  },
+  {
+    id: 'Tatweer-solution',
+    name: 'Tatweer smart solution',
+    sector: 'IT & Software Solutions',
+    logo: '/images/smart-solution.jpeg'
   }
 ];
 
