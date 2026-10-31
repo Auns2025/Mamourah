@@ -3,12 +3,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Info } from 'lucide-react';
 import SectionHeader from '../components/SectionHeader';
 import ProjectCard from '../components/ProjectCard';
+import ProjectLightbox from '../components/ProjectLightbox';
 import FinalCta from '../components/FinalCta';
 import SEO from '../components/SEO';
 import { projectsData, projectCategories } from '../data/projectsData';
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
 
   const filteredProjects =
     activeFilter === 'All'
@@ -16,6 +19,15 @@ export default function Projects() {
       : projectsData.filter(
           (p) => p.category === activeFilter || p.secondaryCategory === activeFilter
         );
+
+  const handleOpenLightbox = (index) => {
+    setSelectedProjectIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const handleCloseLightbox = () => {
+    setLightboxOpen(false);
+  };
 
   return (
     <>
@@ -84,14 +96,27 @@ export default function Projects() {
           {/* Filterable Grid with ANIMATION 04 Layout Transitions */}
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <AnimatePresence>
-              {filteredProjects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+              {filteredProjects.map((project, index) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  onImageClick={() => handleOpenLightbox(index)}
+                />
               ))}
             </AnimatePresence>
           </motion.div>
 
         </div>
       </section>
+
+      {/* Full-Screen Project Image Lightbox */}
+      <ProjectLightbox
+        isOpen={lightboxOpen}
+        projects={filteredProjects}
+        currentIndex={selectedProjectIndex}
+        onClose={handleCloseLightbox}
+        onNavigate={setSelectedProjectIndex}
+      />
 
       {/* Final Call to Action */}
       <FinalCta />

@@ -9,7 +9,7 @@ import CursorHighlightCard from './CursorHighlightCard';
  * EFFECT 10: Project image gradient overlay transition
  * ANIMATION 04: Filter layout transitions
  */
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, onImageClick }) {
   return (
     <motion.div
       layout
@@ -21,7 +21,25 @@ export default function ProjectCard({ project }) {
     >
       <CursorHighlightCard className="h-full flex flex-col justify-between">
         {/* Project Image & EFFECT 10 Gradient Transition */}
-        <div className="relative aspect-[16/11] overflow-hidden bg-brand-ivory">
+        <div
+          className={`relative aspect-[16/11] overflow-hidden bg-brand-ivory ${
+            onImageClick ? 'cursor-pointer' : ''
+          }`}
+          onClick={onImageClick ? () => onImageClick(project) : undefined}
+          role={onImageClick ? 'button' : undefined}
+          tabIndex={onImageClick ? 0 : undefined}
+          onKeyDown={
+            onImageClick
+              ? (e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onImageClick(project);
+                  }
+                }
+              : undefined
+          }
+          aria-label={onImageClick ? `View full-screen image of ${project.title}` : undefined}
+        >
           <img
             src={project.image}
             alt={project.title}
@@ -33,7 +51,7 @@ export default function ProjectCard({ project }) {
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
 
           {/* Category Pill */}
-          <div className="absolute top-4 left-4 z-10">
+          <div className="absolute top-4 left-4 z-10 pointer-events-none">
             <span className="inline-block bg-white/95 backdrop-blur-xs text-brand-black text-[10px] font-montserrat font-bold uppercase tracking-wider px-2.5 py-1 border border-brand-border shadow-xs">
               {project.category}
             </span>
@@ -41,7 +59,7 @@ export default function ProjectCard({ project }) {
 
           {/* Representative Visual Label if applicable */}
           {project.isRepresentativeImage && (
-            <div className="absolute bottom-3 left-4 right-4 z-10 flex items-center gap-1.5 text-[10px] text-white/80 bg-black/50 backdrop-blur-xs px-2 py-1 rounded-xs">
+            <div className="absolute bottom-3 left-4 right-4 z-10 flex items-center gap-1.5 text-[10px] text-white/80 bg-black/50 backdrop-blur-xs px-2 py-1 rounded-xs pointer-events-none">
               <Info className="w-3 h-3 text-brand-red shrink-0" />
               <span className="truncate">Representative Architectural Visual</span>
             </div>
